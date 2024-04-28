@@ -162,10 +162,23 @@ async function loadEager(doc) {
   document.documentElement.lang = "en";
   decorateTemplateAndTheme();
   const main = doc.querySelector("main");
+  // if (main) {
+  //   decorateMain(main);
+  //   document.body.classList.add("appear");
+  //   await waitForLCP(LCP_BLOCKS);
+  // }
+
   if (main) {
     decorateMain(main);
-    document.body.classList.add("appear");
-    await waitForLCP(LCP_BLOCKS);
+    // wait for atjs to finish loading
+    await atjsPromise;
+    // show the LCP block in a dedicated frame to reduce TBT
+    await new Promise((resolve) => {
+      window.requestAnimationFrame(async () => {
+        await waitForLCP(LCP_BLOCKS);
+        resolve();
+      });
+    });
   }
 
   try {
