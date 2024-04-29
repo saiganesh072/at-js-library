@@ -1,8 +1,5 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <script src="/scripts/aem.js" type="module"></script>
-
-<script src="/scripts/scripts.js" type="module"></script>
-
 <script>
   //prehiding snippet for Adobe Target with asynchronous tags deployment
   (function (win, doc, style, timeout) {
@@ -35,6 +32,8 @@
     }, timeout);
   })(window, document, "body {opacity: 0 !important}", 3000);
 </script>
+<script src="/scripts/scripts.js" type="module"></script>
+
 <script>
   window.targetGlobalSettings = {
     cookieDomain: window.location.hostname,
