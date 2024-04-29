@@ -140,20 +140,19 @@ async function getAndApplyOffers() {
 }
 
 let atjsPromise = Promise.resolve();
-if (getMetadata("target")) {
-  atjsPromise = initATJS("./at.js", {
-    clientCode: "agsinternal",
-    serverDomain: "agsinternal.tt.omtrdc.net",
-    imsOrgId: "975D01725D5A6B1C0A495EF5@AdobeOrg",
-    bodyHidingEnabled: false,
-    cookieDomain: window.location.hostname,
-    pageLoadEnabled: false,
-    secureOnly: true,
-    viewsEnabled: false,
-    withWebGLRenderer: false,
-  });
-  document.addEventListener("at-library-loaded", () => getAndApplyOffers());
-}
+
+atjsPromise = initATJS("./at.js", {
+  clientCode: "agsinternal",
+  serverDomain: "agsinternal.tt.omtrdc.net",
+  imsOrgId: "975D01725D5A6B1C0A495EF5@AdobeOrg",
+  bodyHidingEnabled: false,
+  cookieDomain: window.location.hostname,
+  pageLoadEnabled: false,
+  secureOnly: true,
+  viewsEnabled: false,
+  withWebGLRenderer: false,
+});
+document.addEventListener("at-library-loaded", () => getAndApplyOffers());
 
 /**
  * Loads everything needed to get to LCP.
