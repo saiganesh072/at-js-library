@@ -173,6 +173,7 @@ async function loadEager(doc) {
     decorateMain(main);
     // wait for atjs to finish loading
     await atjsPromise;
+    document.body.classList.add("appear");
     // show the LCP block in a dedicated frame to reduce TBT
     await new Promise((resolve) => {
       window.requestAnimationFrame(async () => {
